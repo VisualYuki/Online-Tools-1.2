@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="calculator__inner">
+        <div class="calculator__top">
+          <div class="result">
+            <div  class="result__previous-operand"></div>
+            <div  class="result__current-operand">10</div>
+            
+          </div>
+        </div>
+        <div class="calculator__buttons">
+          <div class="left-container">
+                <div class="row">
+              <button operandText class="">x<span class="supY">y</span></button>
+              <button  name = "single-operator"  class="">x!</button  >
+              <button name = "symbol"  class="">±</button>
+            </div>
+            <div class="row">
+              <button  name = "single-operator"  class="">asin</button>
+              <button  name = "single-operator"  class="">sin</button>
+              <button  name = "single-operator"  class="">1/x</button>
+            </div>
+            <div class="row">
+              <button  name = "single-operator"  class="">acos</button>
+              <button  name = "single-operator"  class="">cos</button>
+              <button  name = "single-operator"  class="">√</button>
+            </div>
+            <div class="row">
+              <button  name = "single-operator"  class="">atan</button>
+              <button  name = "single-operator"  class="">tg</button>
+              <button  name = "single-operator"  class="">ln</button>
+            </div>
+            <div class="row">
+              <button name = "single-operator" class="">lg</button>
+              <button name = "symbol" class="">π</button data-digit >
+              <button name = "symbol" class="">e</button>
+            </div>
+          </div>
+
+          <div class="center-container">
+            <div class="row">
+              <button C class="C">С</button>
+              <button DEL class="">DEL</button>
+              <button operandText class="">mod</button>
+            </div>
+            <div class="row">
+              <button name = "data-digit"  class="">7</button>
+              <button name = "data-digit"  class="">8</button>
+              <button name = "data-digit"  class="">9</button>
+            </div>
+            <div class="row">
+              <button name = "data-digit"  class="">4</button>
+              <button name = "data-digit"  class="">5</button>
+              <button name = "data-digit"  class="">6</button>
+            </div>
+            <div class="row">
+              <button name = "data-digit"  class="">1</button>
+              <button name = "data-digit"  class="">2</button>
+              <button name = "data-digit"  class="">3</button>
+            </div>
+            <div class="row">
+              <button name = "data-digit"  class="">0</button>
+              <button name = "symbol"   class="">.</button>
+            </div>
+          </div>
+          <div class="right-container">
+            <button operandText class="">÷</button operandText>
+            <button operandText class="">*</button>
+            <button operandText class="">-</button>
+            <button operandText class="">+</button>
+            <button equalButton class="">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="js/index.js"></script>
+</html>
