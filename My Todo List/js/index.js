@@ -1,53 +1,55 @@
 class View {
-  constructor() {}
+  constructor() {
+    this.todoList = document.getElementById("todo-list");
+    this.addInput = document.getElementById("add-input");
+  }
+
+  addAppItem(listItem) {
+    this.todoList.appendChild(listItem);
+    this.addInput.value = "";
+  }
 }
 
 class Model {
-  constructor() {}
+  constructor() {
+    this.View = new View();
+  }
 
   createItem(title) {
-    const checkBox = this.createElement(
-      "input",
-      new { class: "checkbox", type: "checkbox" }()
-    );
-    const label = this.createElement("label", { class: "title" }, title);
+    const checkBox = this.createElement("input", {
+      className: "checkbox",
+      type: "checkbox"
+    });
+    const label = this.createElement("label", { className: "title" }, title);
     const input = this.createElement("input", {
-      class: "textfield",
+      className: "textfield",
       type: "text"
     });
-    const editButton = this.createElement(
-      "button",
-      { class: "edit" },
-      "Изменить"
-    );
-    const deleteButton = this.createElement(
-      "button",
-      { class: "delete" },
-      "Удалить"
-    );
-    const listItem = document.createElement(
+    const editButton = this.createElement("button", { className: "edit" });
+    const deleteButton = this.createElement("button", { className: "delete" });
+    const listItem = this.createElement(
       "li",
-      { class: "todo-item" },
+      { className: "todo-item" },
       checkBox,
       label,
       input,
       editButton,
       deleteButton
     );
-
-    console.log(item);
+    this.View.addAppItem(listItem);
+    // console.log(listItem);
   }
 
   createElement(tag, props, ...children) {
     const item = document.createElement(tag);
-    Object.keys(props).forEach(function(prop) {
+    Object.keys(props).forEach(prop => {
       item[prop] = props[prop];
     });
 
     if (children.length > 0) {
       children.forEach(function(child) {
         if (typeof child == "string") {
-          item.contentText = child;
+          item.textContent = child;
         } else item.appendChild(child);
       });
     }
@@ -63,7 +65,7 @@ class Controller {
   }
 
   initEvents() {
-    this.addButton.addEventListener("click", this.addButtonEvent);
+    this.addButton.addEventListener("click", this.addButtonEvent.bind(this));
   }
 
   addButtonEvent(event) {
