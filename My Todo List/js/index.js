@@ -8,12 +8,24 @@ class View {
     this.todoList.appendChild(listItem);
     this.addInput.value = "";
   }
+
+  deleteItem(listItem) {
+    listItem.remove();
+  }
+
+  editing(listItem, title) {
+    listItem.classList.toggle("editing");
+    listItem.querySelector(".textfield").value = title;
+  }
+
+  saveEditing(listItem, title) {
+    listItem.classList.toggle("editing");
+    listItem.querySelector(".title").textContent = title;
+  }
 }
 
 class Model {
-  constructor() {
-    this.View = new View();
-  }
+  constructor() {}
 
   createItem(title) {
     const checkBox = this.createElement("input", {
@@ -26,7 +38,11 @@ class Model {
       type: "text"
     });
     const editButton = this.createElement("button", { className: "edit" });
+    editButton.onclick = controller.editButtonEvent;
+
     const deleteButton = this.createElement("button", { className: "delete" });
+    deleteButton.addEventListener("click", controller.deleteButtonEvent);
+
     const listItem = this.createElement(
       "li",
       { className: "todo-item" },
@@ -36,7 +52,7 @@ class Model {
       editButton,
       deleteButton
     );
-    this.View.addAppItem(listItem);
+    view.addAppItem(listItem);
     // console.log(listItem);
   }
 
@@ -59,13 +75,32 @@ class Model {
 }
 
 class Controller {
-  constructor(model) {
-    this.model = model;
+  constructor() {
     this.addButton = document.getElementById("add-button");
   }
 
   initEvents() {
     this.addButton.addEventListener("click", this.addButtonEvent.bind(this));
+  }
+
+  deleteButtonEvent(event) {
+    view.deleteItem(event.target.parentNode);
+  }
+
+  saveEditingButtonEvent(event) {
+    const listItem = event.target.parentNode;
+    const title = listItem.querySelector(".textfield").textContent;
+    view.saveEditing(listItem, title);
+
+    event.target.onclick = this.editButtonEvent;
+  }
+
+  editButtonEvent(event) {
+    const listItem = event.target.parentNode;
+    const title = listItem.querySelector(".title").textContent;
+
+    view.editing(event.target.parentNode, title);
+    event.target.onclick = this.saveEditingButtonEvent;
   }
 
   addButtonEvent(event) {
@@ -74,15 +109,13 @@ class Controller {
     const addInput = document.getElementById("add-input");
 
     if (addInput.value !== "") {
-      this.model.createItem(addInput.value);
+      model.createItem(addInput.value);
     }
   }
 }
 
-function main() {
-  const model = new Model();
-  const controller = new Controller(model);
-  controller.initEvents();
-}
+const model = new Model();
+const controller = new Controller();
+const view = new View();
 
-main();
+controller.initEvents();

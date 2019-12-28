@@ -27,18 +27,27 @@ main {
 header {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0 1rem;
 
   text-align: center;
   text-transform: uppercase;
 
   color: white;
-  background-color: #d7ec1a;
+  background-color: #9aadff;
 }
 
 header h1 {
   display: inline-block;
-  margin: 1rem auto;
+  padding: 10px 0;
+
+  margin-block-end: 0;
+  margin-block-start: 0;
+  margin-bottom: 0;
+  margin-inline-end: 0;
+  margin-inline-start: 0;
+  margin-left: 0;
+  margin-right: 0;
 
   color: #323330;
 }
@@ -75,8 +84,23 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  outline: none;
+}
+
 .title {
   flex: 1 0 0;
+  margin-left: 10px;
+  padding: 10px 0;
+
+  font-size: 14px;
+  text-overflow: ellipsis;
+
+  overflow: hidden;
+}
+
+.title::first-letter {
+  text-transform: uppercase;
 }
 
 .delete,
@@ -116,6 +140,10 @@ button {
   color: green;
 }
 
+.checkbox {
+  margin-right: 10px;
+}
+
 /* Todo form */
 
 #todo-form {
@@ -131,24 +159,55 @@ button {
   transition: all 0.2s;
 }
 
-#todo-form input:focus {
-  border: 1px solid #f0db4f;
+input:focus {
+  border: 1px solid #9aadff;
 }
 
 #todo-form button {
   margin-left: 10px;
 }
 
+#todo-form button:hover {
+  background: #9aadff;
+  color: white;
+}
+
 input {
   padding: 0.5em;
 
   font-family: "Consolas", Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  font-size: 14px;
 
   color: #757575;
   border-radius: 2px;
   border: 1px solid lightgray;
   outline: none;
+}
+
+input[type="text"] {
+  flex: 1 0 0;
+  margin-right: 5px;
+}
+
+input[type="text"]::first-letter {
+  text-transform: uppercase;
+}
+
+.todo-item .textfield {
+  display: none;
+}
+
+.todo-item.editing .title {
+  display: none;
+}
+
+.todo-item.editing .textfield {
+  display: block;
+}
+
+.todo-item.editing .edit:before {
+  content: "\f0c7";
+  font-family: "icomoon";
 }
 
 /* Todo Item */
@@ -171,15 +230,12 @@ input {
 .todo-item .checkbox {
   margin-right: 0.5rem;
 } */
-.todo-item .textfield {
-  display: none;
-}
 
-.todo-item .title {
-  /* overflow-y: scroll;
+/* .todo-item .title {
+  overflow-y: scroll;
 
-  overflow-wrap: break-word;*/
-}
+  overflow-wrap: break-word;
+} */
 
 /* .todo-item .title,
 .todo-item .textfield {
@@ -190,15 +246,7 @@ input {
   text-decoration: line-through;
 }
 
-.todo-item.editing .title {
-  display: none;
-}
-
-
-
-.todo-item.editing .textfield {
-  display: block;
-} */
+ */
 
 /* .todo-item button {
   opacity: 1;
