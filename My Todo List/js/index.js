@@ -1,11 +1,26 @@
 class View {
   constructor() {
-    this.todoList = document.getElementById("todo-list");
     this.addInput = document.getElementById("add-input");
   }
 
   addAppItem(listItem) {
-    this.todoList.appendChild(listItem);
+    const selectedIndex = listItem.children[3].selectedIndex;
+    let selectedIndexName;
+
+    switch (selectedIndex) {
+      case 0:
+        selectedIndexName = "A";
+        break;
+      case 1:
+        selectedIndexName = "B";
+        break;
+      case 2:
+        selectedIndexName = "C";
+        break;
+    }
+
+    const priorityItem = document.querySelector("." + selectedIndexName);
+    priorityItem.appendChild(listItem);
     this.addInput.value = "";
   }
 
@@ -15,23 +30,34 @@ class View {
 
   editing(listItem, title) {
     listItem.classList.toggle("editing");
-    listItem.querySelector(".textfield").value = title;
+    listItem.querySelector(".textfield").value =
+      title.charAt(0).toUpperCase() + title.substr(1, title.length - 1);
   }
 
   saveEditing(listItem, title) {
     listItem.classList.toggle("editing");
     listItem.querySelector(".title").textContent = title;
   }
+
+  updateCompletedTask(listItem, isChecked) {
+    if (isChecked) {
+      listItem.classList.add("completed");
+    } else listItem.classList.remove("completed");
+  }
 }
 
 class Model {
   constructor() {}
 
-  createItem(title) {
+  createItem(title, priorityList) {
+    priorityList.addEventListener("change", controller.changePriorityItem);
     const checkBox = this.createElement("input", {
       className: "checkbox",
       type: "checkbox"
     });
+
+    checkBox.onclick = controller.checkBoxEvent;
+
     const label = this.createElement("label", { className: "title" }, title);
     const input = this.createElement("input", {
       className: "textfield",
@@ -49,11 +75,12 @@ class Model {
       checkBox,
       label,
       input,
+      priorityList,
+
       editButton,
       deleteButton
     );
     view.addAppItem(listItem);
-    // console.log(listItem);
   }
 
   createElement(tag, props, ...children) {
@@ -83,16 +110,20 @@ class Controller {
     this.addButton.addEventListener("click", this.addButtonEvent.bind(this));
   }
 
+  checkBoxEvent(event) {
+    view.updateCompletedTask(event.target.parentNode, event.target.checked);
+  }
+
   deleteButtonEvent(event) {
     view.deleteItem(event.target.parentNode);
   }
 
   saveEditingButtonEvent(event) {
     const listItem = event.target.parentNode;
-    const title = listItem.querySelector(".textfield").textContent;
-    view.saveEditing(listItem, title);
+    const title = listItem.querySelector(".textfield").value;
 
-    event.target.onclick = this.editButtonEvent;
+    view.saveEditing(listItem, title);
+    event.target.onclick = controller.editButtonEvent;
   }
 
   editButtonEvent(event) {
@@ -100,16 +131,23 @@ class Controller {
     const title = listItem.querySelector(".title").textContent;
 
     view.editing(event.target.parentNode, title);
-    event.target.onclick = this.saveEditingButtonEvent;
+    event.target.onclick = controller.saveEditingButtonEvent;
+  }
+
+  changePriorityItem(event) {
+    view.addAppItem(event.target.parentNode);
   }
 
   addButtonEvent(event) {
     event.preventDefault();
     const addButtonParent = event.target.parentNode;
     const addInput = document.getElementById("add-input");
+    const priorityList = addButtonParent.querySelector("select");
+    const timePriorityList = priorityList.cloneNode(true);
 
     if (addInput.value !== "") {
-      model.createItem(addInput.value);
+      model.createItem(addInput.value, priorityList);
+      addInput.after(timePriorityList);
     }
   }
 }
