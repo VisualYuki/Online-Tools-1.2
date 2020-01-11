@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  margin-block-end: 0 !important;
+  margin-block-start: 0 !important;
+  margin-bottom: 0 !important;
+  margin-top: 0;
+}
+
+p {
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+main {
+  max-width: 1000px;
+  margin: 100px auto 0 auto;
+}
+
+.main-time {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.clock,
+.time-info {
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: normal;
+  text-align: center;
+}
+
+.clock {
+  font-size: 10vw;
+}
+
+.time-info {
+  font-size: 4vw;
+}
