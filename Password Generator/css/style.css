@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block-end: 0 !important;
+  margin-block-start: 0 !important;
+  margin-bottom: 0 !important;
+  margin-top: 0;
+}
+
+p {
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+body {
+  background-color: #f9fbfd;
+}
+
+.main__inner {
+  margin-top: 100px !important;
+  max-width: 700px;
+  margin: 0 auto;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  font-weight: 300;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.password {
+  font-size: 60px;
+  font-weight: 500;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.generate__inner {
+  user-select: none;
+  width: 320px;
+  margin: 14px auto;
+  padding: 14px 34px;
+
+  font-size: 25px;
+  text-align: center;
+
+  background-color: rgb(211, 45, 39);
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.generate__inner:hover {
+  background-color: rgb(167, 16, 11);
+}
+
+.password-length {
+  margin-top: 30px;
+}
+
+.password-length__text {
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+
+.password-length__range {
+  -webkit-appearance: none;
+
+  display: block;
+  width: 200px;
+  height: 25px;
+
+  margin: 0 auto;
+  margin-bottom: 10px;
+
+  outline: none;
+}
+
+.password-length__range::-webkit-slider-runnable-track {
+  position: relative;
+  height: 10px;
+
+  border-radius: 10px;
+  border: 1px solid #000;
+  background-color: rgb(206, 206, 206);
+  border: none;
+}
+
+.password-length__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -5px;
+
+  background-color: rgb(211, 45, 39);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.password-length__range::-moz-range-track {
+  height: 10px;
+
+  border-radius: 10px;
+  border: 1px solid #000;
+  background-color: rgb(206, 206, 206);
+  border: none;
+}
+
+.password-length__range:-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -5px;
+
+  background-color: rgb(211, 45, 39);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.password-length__range-inner {
+  position: absolute;
+
+  height: 10px;
+  background-color: rgb(128, 38, 35);
+}
+
+.optional {
+}
+
+.optional__item {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.optinal__text {
+  font-size: 16px;
+  margin-right: 30px;
+}
+
+.optional__checkbox {
+}

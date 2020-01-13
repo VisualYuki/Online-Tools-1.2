@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/media.css" />
+    <link rel="stylesheet" href="./css/font.css" />
+    <link rel="stylesheet" href="./css/animation.css" />
+    <link rel="stylesheet" href="./css/normalize.css" />
+  </head>
+  <body>
+    <!-- MAIN -->
+    <main>
+      <div class="main__inner">
+        <h2 class="title">Password:</h2>
+        <h1 class="password">F))s226O</h1>
+        <div class="generate">
+          <div class="generate__inner">
+            Generate password
+          </div>
+        </div>
+        <div class="password-length">
+          <h3 class="password-length__text">
+            Select the needed password length:
+          </h3>
+          <div class="password-length__range-inner"></div>
+
+          <input
+            class="password-length__range"
+            type="range"
+            min="6"
+            max="20"
+            value="10"
+          />
+          <h3 class="password-length__text">
+            The number symbols: <span class="number-symbols">10</span>
+          </h3>
+        </div>
+        <div class="optional">
+          <div class="optional__item">
+            <div class="optinal__text">
+              Lower case (a-z)
+            </div>
+            <input
+              class="optional__checkbox"
+              id="lower"
+              type="checkbox"
+              checked
+              name=""
+              id=""
+            />
+          </div>
+          <div class="optional__item">
+            <div class="optinal__text">
+              Upper case (A-Z)
+            </div>
+            <input
+              class="optional__checkbox"
+              id="upper"
+              type="checkbox"
+              checked
+              name=""
+              id=""
+            />
+          </div>
+          <div class="optional__item">
+            <div class="optinal__text">
+              Digits (0-9)
+            </div>
+            <input
+              class="optional__checkbox"
+              id="digits"
+              type="checkbox"
+              checked
+              name=""
+              id=""
+            />
+          </div>
+          <div class="optional__item">
+            <div class="optinal__text">
+              Symbol( %,*,),?... )
+            </div>
+            <input
+              class="optional__checkbox"
+              id="symbols"
+              type="checkbox"
+              name=""
+              id=""
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- / MAIN -->
+  </body>
+  <script src="js/index.js"></script>
+</html>

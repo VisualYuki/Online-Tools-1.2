@@ -1,0 +1,11 @@
+@media (max-width: 800px) {
+  .password {
+    font-size: 40px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .password {
+    font-size: 30px !important;
+  }
+}
